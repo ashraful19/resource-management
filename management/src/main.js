@@ -1,0 +1,76 @@
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import axios from "axios";
+import VueAxios from "vue-axios";
+import Toasted from "vue-toasted";
+import VueScrollTo from "vue-scrollto";
+import Loading from "vue-loading-overlay";
+import VueSweetalert2 from 'vue-sweetalert2';
+import "@/assets/css/index.css";
+import "vue-loading-overlay/dist/vue-loading.css";
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+Vue.config.productionTip = false;
+
+Vue.use(VueAxios, axios);
+Vue.use(Toasted, {
+    position: "top-center",
+    duration: 2000,
+});
+Vue.use(VueScrollTo);
+Vue.use(Loading, {
+    loader: "dots",
+    width: 150,
+    height: 150,
+    color: '#1F2937',
+});
+let loaderIndicator = null;
+
+Vue.use(VueSweetalert2);
+
+axios.defaults.baseURL = process.env.VUE_APP_API_URL + "/";
+axios.interceptors.request.use((config) => {
+    showLoaderIndicator();
+    return config;
+});
+
+
+axios.interceptors.response.use(
+    (response) => {
+        hideLoaderIndicator();
+        return response;
+    },
+    (error) => {
+        loaderIndicator.hide();
+        return Promise.reject(error);
+    }
+);
+
+
+router.beforeResolve((to, from, next) => {
+    if (to.name) {
+        showLoaderIndicator();
+    }
+    next();
+});
+
+
+router.afterEach((to, from) => {
+    VueScrollTo.scrollTo('#app');
+    hideLoaderIndicator();
+});
+
+new Vue({
+    router,
+    render: (h) => h(App),
+}).$mount("#app");
+
+function showLoaderIndicator() {
+    loaderIndicator = Vue.$loading.show();
+}
+function hideLoaderIndicator() {
+    if (loaderIndicator) {
+        loaderIndicator.hide();
+    }
+}
