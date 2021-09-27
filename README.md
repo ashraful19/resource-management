@@ -16,6 +16,10 @@
  - [x] Click to Open Link (LINK Resource) by Admin and Visitor
  - [x] View Description and View snippet and Copy snippet to clipboard (HTML Resource)
 
+## Demo
+**Management Site** ---> [https://resource-manage.ashrafulislam.info](https://resource-manage.ashrafulislam.info)  
+**Browsing Site** ---> [https://resource.ashrafulislam.info](https://resource.ashrafulislam.info)
+
 ### Folder Structure
  - Root Folder
 	 - **api** ---> this has the Laravel part, acting as api, and also includes the visitor part
@@ -59,6 +63,7 @@ Clone the repository in your local machine using `git clone https://ashraful-isl
 > You can see a **Create New** button to create new resources. 
 
 ## Features
+> Below points may seem over-engineering for a project like this. Because project requirements were basic and size was small too. But the below points are done to keep the project highly extendable and to demonstrate the need or importance or usability of these in bigger projects.
  - Laravel part (**Api**)
 	 - Developed following **SOLID** *Principles*
 	 - Followed **Service** *Pattern* where application
@@ -84,5 +89,5 @@ Clone the repository in your local machine using `git clone https://ashraful-isl
  6. Laravel part **test cases** can be ran with **sqlite in-memory** db, so we may not need to create separate db for test. Currently i was not inrested into installing sqlite driver.
 
 
-&copy; Ashraful Islam ( ai.tushar19@gmail.com )
+## &copy; **Ashraful Islam** ( ai.tushar19@gmail.com )
 
