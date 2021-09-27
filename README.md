@@ -59,7 +59,7 @@ Clone the repository in your local machine using `git clone https://ashraful-isl
  3. run command `npm run serve`
 
 > Admin Management site is ready to browse. Just open your browser and
-> navigate to`http://localhost:8000`  and you should see the management site home page showing a blank list page of resources.
+> navigate to`http://localhost:8080`  and you should see the management site home page showing a blank list page of resources.
 > You can see a **Create New** button to create new resources. 
 
 ## Features
